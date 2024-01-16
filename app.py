@@ -11,12 +11,8 @@ app.config['SQLALCHEMY_ECHO'] =  True
 app.config['SECRET_KEY'] = "fgshsafadfhd"
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 connect_db(app)
-# db.create_all()
 
 debug = DebugToolbarExtension(app)
-
-
-db.create_all()
 
 @app.route('/')
 def root():

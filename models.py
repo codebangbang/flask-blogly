@@ -28,5 +28,6 @@ class User(db.Model):
         return f"{self.first_name} {self.last_name}"
 
 def connect_db(app):
-    db.app = app
-    db.init_app(app)
+    with app.app_context():
+        db.app = app
+        db.init_app(app)
