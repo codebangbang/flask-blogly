@@ -2,23 +2,24 @@
 {% block title %} Show Users {% endblock %}
 
 {% block content %}
-<div class = "row">
+<div class="row">
     {% if user.image_url %}
     <div class="col-sm-2 col-6">
-        <img src = "{{user.image_url}}">
+        <img src="{{user.image_url}}">
     </div>
     {% endif %}
 
     <div class="col-sm-10 col-12">
         <h1> {{user.full_name}}</h1>
         <form>
-            <button class ="btn"
-                formaction="/users/{{user.id}}/edit"
-                formmethod="GET">Edit User
+            <button class="btn" formaction="/users/{{user.id}}/edit" formmethod="GET">Edit User
             </button>
-            <button class ="btn-delete"
-                formaction="/users/{{user.id}}/delete"
-                formmethod="POST">Delete User
+            <button class="btn-delete" formaction="/users/{{user.id}}/delete" formmethod="POST">Delete User
+            </button>
+        </form>
+        <h3> {{user.first_name}}'s Blog Posts</h3>
+        <form>
+            <button class="btn" formaction="/users/{{user.id}}/posts/new" formmethod="GET">Add Post
             </button>
         </form>
     </div>

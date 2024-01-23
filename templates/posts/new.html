@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %} New Post {% endblock %}
+
+{% block content %}
+<h1>Add a new blog post for {{user.full_name}}</h1>
+<form method="POST">
+    <div class="group-row-form">
+        <label for="new_post_title" class="form-label">Title</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="new_post" name="new_post" placeholder="New Post Title">
+        </div>
+    </div>
+
+    <div class="group-row-form">
+        <label for="new_post_content" class="form-label">Content</label>
+        <div class="col-sm-100">
+            <input type="text" class="form-control" id="post_content" name="post_content"
+                placeholder="Add your post content">
+        </div>
+    </div>
+
+    <div class="group-row-form">
+        <div class="ml-auto mr-3">
+            <a href="/users/{{user.id}}">Cancel</a>
+            <button type="submit" class="btn-submit">Add</button>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}
