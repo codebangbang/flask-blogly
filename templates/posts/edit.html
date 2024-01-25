@@ -2,7 +2,7 @@
 {% block title %} Edit Post {% endblock %}
 
 {% block content %}
-<h1>Edit a Post</h1>
+<h1>Edit Post</h1>
 <form method="POST" action="/posts/{{post.id}}/edit">
     <div class="group-row-form">
         <label for="title">Title</label>
@@ -25,12 +25,6 @@
             <a href="/users/{{post.user_id}}">Cancel</a>
             <button type="submit">Edit</button>
         </div>
-    </div>
-
-    <div class="group-form">
-        <a href="/users" class="btn">Cancel</a>
-        <button type="submit" class="btn-submit">Save</button>
-    </div>
     </div>
 
 </form>

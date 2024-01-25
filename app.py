@@ -19,7 +19,7 @@ debug = DebugToolbarExtension(app)
 @app.route('/')
 def root():
     posts = Post.query.order_by(Post.created_at.desc()).limit(5).all()
-    return render_template('posts/index.html', posts=posts)
+    return render_template('posts/homepage.html', posts=posts)
 
 
 @app.route('/users')
@@ -81,7 +81,6 @@ def delete_user(user_id):
     
     user = User.query.get_or_404(user_id)
     
-
     db.session.delete(user)
     db.session.commit()
 
@@ -142,7 +141,7 @@ def update_post(post_id):
 def delete_post(post_id):
     
     post = Post.query.get_or_404(post_id)
-    user_id = post.user_id
+    # user_id = post.user_id
     db.session.delete(post)
     db.session.commit()
 
