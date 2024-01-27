@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %} Add Tag {% endblock %}
+
+{% block content %}
+<h1>Add a new Tag</h1>
+
+
+<form method="POST" action="/tags/new">
+    <div class="group-row-form">
+        <label for="first_name" class="form-label">Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="new_tag" name="new_tag" placeholder="Enter a name for the tag">
+        </div>
+    </div>
+
+    <!-- <div class="group-row-form">
+        <label for="last_name" class="form-label">Last Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter your last name">
+        </div>
+    </div>
+
+    <div class="group-row-form">
+        <label for="image_url" class="form-label">Image URL</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="image_url" name="image_url" placeholder="Upload your picture">
+        </div>
+    </div> -->
+
+    <div class="group-row-form">
+        <div>
+            <a href="/tags">Cancel</a>
+            <button type="submit">Add</button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
