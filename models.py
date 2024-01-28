@@ -64,14 +64,13 @@ class Tag(db.Model):
     __tablename__ = 'tags'
 
     id = db.Column(db.Integer,
-                   primary_key=True,
-                   autoincrement=True)
+                   primary_key=True)
 
     name = db.Column(db.Text,
                      nullable=False,
                      unique=True)
 
-    # posts = db.relationship('Post', secondary="posts_tags", cascade = "all,delete", backref ="tags")
+    posts = db.relationship('Post', secondary="posts_tags", cascade = "all,delete", backref ="tags")
 
 class PostTag(db.Model):
     __tablename__ = 'posts_tags'
