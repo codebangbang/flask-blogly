@@ -12,7 +12,8 @@ app.config['SECRET_KEY'] = "fgshsafadfhd"
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 connect_db(app)
-# db.create_all()
+with app.app_context():
+    db.create_all()
 
 debug = DebugToolbarExtension(app)
 
@@ -125,7 +126,7 @@ def show_post(post_id):
 def edit_post(post_id):
     
     post = Post.query.get_or_404(post_id)
-    tags = Tags.query.all()
+    tags = Tag.query.all()
     return render_template("posts/edit.html", post=post, tags=tags)
 
 
@@ -156,7 +157,7 @@ def delete_post(post_id):
     return redirect(f"/users/{post.user_id}")
 
 
-####################################################################################################################################################
+###################################################################################################################################
 
 
 @app.route('/tags')
@@ -176,7 +177,7 @@ def tags_new_form():
 
 @app.route('/tags/new', methods=["POST"])
 def tags_new():
-    post_ids = [int(num) for num in request.form.getlist("posts")],
+    post_ids = [int(num) for num in request.form.getlist("posts")]
     posts = Post.query.filter(Post.id.in_(post_ids)).all()
     new_tag = Tag(name=request.form['name'], posts=posts)
         
@@ -192,7 +193,7 @@ def show_tag(tag_id):
     return render_template("tags/show.html", tag=tag)
 
 @app.route("/tags/<int:tag_id>/edit")
-def tag_user(tag_id):
+def tag_edit_form(tag_id):
     
     tag = Tag.query.get_or_404(tag_id)
     posts = Post.query.all()
@@ -200,7 +201,7 @@ def tag_user(tag_id):
 
 
 @app.route("/tags/<int:tag_id>/edit", methods=["POST"])
-def update_tag(tag_id):
+def tags_edit(tag_id):
     
     tag = Tag.query.get_or_404(tag_id)
     tag.name = request.form['name']

@@ -70,7 +70,7 @@ class Tag(db.Model):
                      nullable=False,
                      unique=True)
 
-    posts = db.relationship('Post', secondary="posts_tags", cascade = "all,delete", backref ="tags")
+    posts = db.relationship("Post", secondary="posts_tags", backref ="tags")
 
 class PostTag(db.Model):
     __tablename__ = 'posts_tags'
